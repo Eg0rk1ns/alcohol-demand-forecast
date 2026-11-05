@@ -1,4 +1,4 @@
-﻿"""
+"""
 Auto-builds the Word report from all saved CSV/PNG artifacts.
 
 Usage:
@@ -266,8 +266,8 @@ def build():
     h2(doc, "4.4. Байесовские интервалы")
     bay = safe_csv("preds_bayesian_with_intervals.csv")
     if bay is not None:
-        coverage = ((bay["y_true"] >= bay["p10"]) &
-                    (bay["y_true"] <= bay["p90"])).mean() * 100
+        coverage = ((bay["sales"] >= bay["p10"]) &
+                    (bay["sales"] <= bay["p90"])).mean() * 100
         para(doc, f"Bayesian Ridge обучен с выводом per-sample std. "
                   f"Эмпирическое покрытие 90%-го интервала P10–P90 на test: "
                   f"{coverage:.1f} % (цель ≈ 90 %). Модель даёт честные "
